@@ -1,10 +1,10 @@
 import React from "react";
-import "./App.css";
+import "./QuestionBlock.css";
 
 function QuestionBlock() {
   return (
     <>
-      <p> Question block</p>
+      <p className="question-block"> Question block</p>
     </>
   );
 }
