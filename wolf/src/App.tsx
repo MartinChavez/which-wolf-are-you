@@ -4,11 +4,17 @@ import QuestionBlock from "./QuestionBlock";
 
 function App() {
   return (
-    <>
-      <QuestionBlock></QuestionBlock>
-      <QuestionBlock></QuestionBlock>
-      <QuestionBlock></QuestionBlock>
-    </>
+    <div className="grid">
+      <div>
+        <QuestionBlock></QuestionBlock>
+      </div>
+      <div>
+        <QuestionBlock></QuestionBlock>
+      </div>
+      <div>
+        <QuestionBlock></QuestionBlock>
+      </div>
+    </div>
   );
 }
 
