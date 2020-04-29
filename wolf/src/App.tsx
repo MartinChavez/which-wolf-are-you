@@ -1,19 +1,11 @@
 import React from "react";
 import "./App.css";
-import QuestionBlock from "./QuestionBlock";
+import QuestionBlocks from "./QuestionBlocks";
 
 function App() {
   return (
     <div className="grid">
-      <div>
-        <QuestionBlock></QuestionBlock>
-      </div>
-      <div>
-        <QuestionBlock></QuestionBlock>
-      </div>
-      <div>
-        <QuestionBlock></QuestionBlock>
-      </div>
+      <QuestionBlocks></QuestionBlocks>
     </div>
   );
 }

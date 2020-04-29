@@ -15,6 +15,8 @@ function QuestionBlock() {
       <h4 className="question-block"> Question block</h4>
       <Question questionNumber={1}></Question>
       <Question questionNumber={2}></Question>
+      <Question questionNumber={3}></Question>
+      <Question questionNumber={4}></Question>
     </>
   );
 }
