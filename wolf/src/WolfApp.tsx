@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import "./WolfApp.css";
 import QuestionBlocks from "./QuestionBlocks";
 import Tally from "./Tally";
 import WolfResult from "./WolfResult";
