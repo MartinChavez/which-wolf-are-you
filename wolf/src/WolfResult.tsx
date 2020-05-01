@@ -8,6 +8,7 @@ function WolfResult() {
       <span role="img" aria-label="wolf-times">
         🐺
       </span>
+      <p>Mexican wolf</p>
     </div>
   );
 }
