@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./WolfResult.css";
+import { ThemeContext } from "./ThemeContext";
 
 function WolfResult() {
+  const theme = useContext(ThemeContext);
   return (
     <div>
       <h4 className="wolf-result">Wolf Result</h4>
       <span role="img" aria-label="wolf-times">
         🐺
       </span>
-      <p>Mexican wolf</p>
+      <p style={{ color: theme.textColor }}>Mexican wolf</p>
     </div>
   );
 }
