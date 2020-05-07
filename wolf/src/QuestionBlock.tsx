@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./QuestionBlock.css";
+import { ThemeContext } from "./ThemeContext";
 
 interface QuestionProps {
   questionNumber: number;
 }
 
 function Question(props: QuestionProps) {
-  return <p>Question {props.questionNumber}</p>;
+  const theme = useContext(ThemeContext);
+  return (
+    <p style={{ color: theme.textColor }}>Question {props.questionNumber}</p>
+  );
 }
 
 function QuestionBlock() {

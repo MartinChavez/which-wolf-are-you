@@ -6,14 +6,10 @@ import WolfResult from "./WolfResult";
 import Social from "./Social";
 import Donate from "./Donate";
 import Header from "./Header";
-import { ThemeInfo, themes } from "./ThemeContext";
-
-export let ThemeContext: React.Context<ThemeInfo>;
+import { ThemeContext, themes } from "./ThemeContext";
 
 function WolfApp() {
   const [theme, setTheme] = useState(themes.day);
-  ThemeContext = React.createContext(theme);
-
   return (
     <ThemeContext.Provider value={theme}>
       <div className="grid" style={{ background: theme.background }}>
