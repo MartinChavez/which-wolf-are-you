@@ -10,7 +10,7 @@ import { ThemeContext, themes } from "./ThemeContext";
 import { getSessionQuestionsAnswers } from "./Questions";
 
 function WolfApp() {
-  const questionsAnswers = getSessionQuestionsAnswers();
+  const questionsAnswers = useMemo(() => getSessionQuestionsAnswers(), []);
   const [theme, setTheme] = useState(themes.day);
   return (
     <ThemeContext.Provider value={theme}>
