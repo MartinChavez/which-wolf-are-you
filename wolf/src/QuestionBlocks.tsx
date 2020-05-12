@@ -12,7 +12,7 @@ function QuestionBlocks(props: QuestionBlocksProps) {
     <>
       {questionBlocks.map((qb) => {
         return (
-          <div>
+          <div key={qb[0].id}>
             <QuestionBlock question={qb[0]} answers={qb[1]}></QuestionBlock>
           </div>
         );
