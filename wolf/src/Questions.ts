@@ -1,3 +1,5 @@
+import { getRandomIds } from "./Random";
+
 interface IQuestionAnswer {
   id: number;
 }
@@ -57,25 +59,20 @@ answerWolf.set(answers[0], wolfs[0]);
 answerWolf.set(answers[1], wolfs[1]);
 
 export const getSessionQuestionsAnswers = () => {
-  let getRandomIds = (list: IQuestionAnswer[], max: number) => {
-    let ids = new Set<number>();
-    while (ids.size < max) {
-      const generatedId = Math.round(Math.random() * list.length);
-      if (list.some((num) => num.id === generatedId)) {
-        ids.add(generatedId);
-      }
-    }
-    return ids;
-  };
-
-  let sessionQuestionIds = getRandomIds(questions, 1);
+  let sessionQuestionIds = getRandomIds(
+    questions.map((q) => q.id),
+    1
+  );
   let sessionQuestions = questions.filter((q) => sessionQuestionIds.has(q.id));
   let sessionQuestionsAnswers = new Map<IQuestion, IAnswer[]>();
 
   sessionQuestions.forEach((sq) => {
     let allSessionQuestionAnswers = questionAnswers.get(sq.id);
     if (allSessionQuestionAnswers) {
-      const sessionQuestionAnswers = getRandomIds(allSessionQuestionAnswers, 4);
+      const sessionQuestionAnswers = getRandomIds(
+        allSessionQuestionAnswers.map((sqa) => sqa.id),
+        4
+      );
       sessionQuestionsAnswers.set(
         sq,
         answers.filter((a) => sessionQuestionAnswers.has(a.id))
