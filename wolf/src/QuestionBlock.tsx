@@ -1,26 +1,29 @@
 import React, { useContext } from "react";
 import "./QuestionBlock.css";
 import { ThemeContext } from "./ThemeContext";
+import { IQuestion, IAnswer } from "./Questions";
 
-interface QuestionProps {
-  questionNumber: number;
-}
+type AnswerProps = {
+  answer: string;
+};
 
-function Question(props: QuestionProps) {
+export type QuestionBlockProps = {
+  question: IQuestion;
+  answers: IAnswer[];
+};
+
+function Answer(props: AnswerProps) {
   const theme = useContext(ThemeContext);
-  return (
-    <p style={{ color: theme.textColor }}>Question {props.questionNumber}</p>
-  );
+  return <p style={{ color: theme.textColor }}>Answer {props.answer}</p>;
 }
 
-function QuestionBlock() {
+function QuestionBlock(props: QuestionBlockProps) {
   return (
     <>
-      <h4 className="question-block"> Question block</h4>
-      <Question questionNumber={1}></Question>
-      <Question questionNumber={2}></Question>
-      <Question questionNumber={3}></Question>
-      <Question questionNumber={4}></Question>
+      <h4 className="question-block"> {props.question.question}</h4>
+      {props.answers.map((ans) => (
+        <Answer key={ans.id} answer={ans.answer}></Answer>
+      ))}
     </>
   );
 }
