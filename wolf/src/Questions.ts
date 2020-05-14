@@ -19,6 +19,7 @@ export interface IWolf {
 
 let questions: IQuestion[] = [
   { id: 1, question: "aaa?" },
+  { id: 2, question: "bbb?" },
   // { id: 2, question: "bbb?" },
   // { id: 3, question: "ccc?" },
   // { id: 4, question: "ddd?" },
@@ -33,6 +34,14 @@ let answers: IAnswer[] = [
   { id: 6, answer: "bbb2" },
   { id: 7, answer: "ccc2" },
   { id: 8, answer: "ddd2" },
+  { id: 9, answer: "aaa3" },
+  { id: 10, answer: "bbb3" },
+  { id: 11, answer: "ccc3" },
+  { id: 12, answer: "ddd3" },
+  { id: 13, answer: "aaa4" },
+  { id: 14, answer: "bbb4" },
+  { id: 15, answer: "ccc4" },
+  { id: 16, answer: "ddd4" },
 ];
 
 let wolfs: IWolf[] = [
@@ -53,6 +62,16 @@ questionAnswers.set(1, [
   answers[6],
   answers[7],
 ]);
+questionAnswers.set(2, [
+  answers[8],
+  answers[9],
+  answers[10],
+  answers[11],
+  answers[12],
+  answers[13],
+  answers[14],
+  answers[15],
+]);
 
 export let answerWolf = new Map<IAnswer, IWolf>();
 answerWolf.set(answers[0], wolfs[0]);
@@ -61,16 +80,15 @@ answerWolf.set(answers[1], wolfs[1]);
 export const getSessionQuestionsAnswers = () => {
   let sessionQuestionIds = getRandomIds(
     questions.map((q) => q.id),
-    1
+    2
   );
   let sessionQuestions = questions.filter((q) => sessionQuestionIds.has(q.id));
   let sessionQuestionsAnswers = new Map<IQuestion, IAnswer[]>();
-
   sessionQuestions.forEach((sq) => {
-    let allSessionQuestionAnswers = questionAnswers.get(sq.id);
-    if (allSessionQuestionAnswers) {
+    let allQuestionAnswers = questionAnswers.get(sq.id);
+    if (allQuestionAnswers) {
       const sessionQuestionAnswers = getRandomIds(
-        allSessionQuestionAnswers.map((sqa) => sqa.id),
+        allQuestionAnswers.map((sqa) => sqa.id),
         4
       );
       sessionQuestionsAnswers.set(

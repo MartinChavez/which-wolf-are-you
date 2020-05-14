@@ -1,9 +1,9 @@
 export let getRandomIds = (list: number[], max: number) => {
   let ids = new Set<number>();
   while (ids.size < max) {
-    const generatedId = Math.round(Math.random() * list.length);
-    if (list.some((num) => num === generatedId)) {
-      ids.add(generatedId);
+    const generatedIndex = Math.round(Math.random() * list.length - 1);
+    if (list[generatedIndex]) {
+      ids.add(list[generatedIndex]);
     }
   }
   return ids;
