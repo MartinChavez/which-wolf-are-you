@@ -73,9 +73,24 @@ questionAnswers.set(2, [
   answers[15],
 ]);
 
-export let answerWolf = new Map<IAnswer, IWolf>();
-answerWolf.set(answers[0], wolfs[0]);
-answerWolf.set(answers[1], wolfs[1]);
+type AnswerId = Pick<IAnswer, "id">;
+export let answerWolf = new Map<AnswerId, IWolf>();
+
+answers.forEach((answer) => {
+  const answerId: AnswerId = { id: answer.id };
+  const randomWolfId = getRandomIds(
+    wolfs.map((w) => w.id),
+    1
+  );
+
+  const getWolfId = (randomWolfId: Set<number>): number => {
+    const wolfId = randomWolfId.values().next().value;
+    return wolfId;
+  };
+
+  const wolf = wolfs.filter((w) => w.id === getWolfId(randomWolfId))[0];
+  answerWolf.set(answerId, wolf);
+});
 
 export const getSessionQuestionsAnswers = () => {
   let sessionQuestionIds = getRandomIds(
