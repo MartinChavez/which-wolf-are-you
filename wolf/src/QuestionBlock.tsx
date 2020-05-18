@@ -69,7 +69,6 @@ function reducer(state: QuestionBlockState, action: QuestionBlockAction) {
 
 function QuestionBlock(props: QuestionBlockProps) {
   const [state, dispatch] = useReducer(reducer, initialState);
-  //const [questionSelectedForBlock, setQuestionSelectedForBlock] = useState(0);
 
   return (
     <>
