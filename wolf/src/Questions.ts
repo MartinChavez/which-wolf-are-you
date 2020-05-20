@@ -15,6 +15,7 @@ export interface IAnswer extends IQuestionAnswer {
 export interface IWolf {
   id: number;
   name: string;
+  face: string;
 }
 
 let questions: IQuestion[] = [
@@ -44,11 +45,11 @@ let answers: IAnswer[] = [
   { id: 16, answer: "ddd4" },
 ];
 
-let wolfs: IWolf[] = [
-  { id: 1, name: "Mexican wolf" },
-  { id: 2, name: "Artic Wolf" },
-  { id: 3, name: "Japanese wolf" },
-  { id: 4, name: "Iberian Wolf" },
+let wolves: IWolf[] = [
+  { id: 1, name: "Mexican wolf", face: "🐺" },
+  { id: 2, name: "Artic Wolf", face: "🦊" },
+  { id: 3, name: "Japanese wolf", face: "🐱" },
+  { id: 4, name: "Iberian Wolf", face: "🐻" },
 ];
 
 export let questionAnswers = new Map<number, IAnswer[]>();
@@ -73,24 +74,32 @@ questionAnswers.set(2, [
   answers[15],
 ]);
 
-type AnswerId = Pick<IAnswer, "id">;
-export let answerWolf = new Map<AnswerId, IWolf>();
+export let GetAllWolves = () => {
+  return wolves;
+};
 
-answers.forEach((answer) => {
-  const answerId: AnswerId = { id: answer.id };
-  const randomWolfId = getRandomIds(
-    wolfs.map((w) => w.id),
-    1
-  );
+export type AnswerId = Pick<IAnswer, "id">;
 
-  const getWolfId = (randomWolfId: Set<number>): number => {
-    const wolfId = randomWolfId.values().next().value;
-    return wolfId;
-  };
+export const getAnswersWolves = () => {
+  let answersWolves = new Map<AnswerId, IWolf>();
 
-  const wolf = wolfs.filter((w) => w.id === getWolfId(randomWolfId))[0];
-  answerWolf.set(answerId, wolf);
-});
+  answers.forEach((answer) => {
+    const answerId: AnswerId = { id: answer.id };
+    const randomWolfId = getRandomIds(
+      wolves.map((w) => w.id),
+      1
+    );
+
+    const getWolfId = (randomWolfId: Set<number>): number => {
+      const wolfId = randomWolfId.values().next().value;
+      return wolfId;
+    };
+
+    const wolf = wolves.filter((w) => w.id === getWolfId(randomWolfId))[0];
+    answersWolves.set(answerId, wolf);
+  });
+  return answersWolves;
+};
 
 export const getSessionQuestionsAnswers = () => {
   let sessionQuestionIds = getRandomIds(

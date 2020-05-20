@@ -7,17 +7,33 @@ import Social from "./Social";
 import Donate from "./Donate";
 import Header from "./Header";
 import { ThemeContext, themes } from "./ThemeContext";
-import { getSessionQuestionsAnswers } from "./Questions";
+import {
+  getSessionQuestionsAnswers,
+  getAnswersWolves,
+  GetAllWolves,
+} from "./Questions";
 
 function WolfApp() {
   const questionsAnswers = useMemo(() => getSessionQuestionsAnswers(), []);
+  const answersWolves = useMemo(() => getAnswersWolves(), []);
+  const allWolves = useMemo(() => GetAllWolves(), []);
+  const [userAnswers, setUserAnswers] = useState(new Set<number>());
+
   const [theme, setTheme] = useState(themes.day);
   return (
     <ThemeContext.Provider value={theme}>
       <div className="grid" style={{ background: theme.background }}>
         <Header setTheme={setTheme}></Header>
-        <QuestionBlocks questionsAnswers={questionsAnswers}></QuestionBlocks>
-        <Tally></Tally>
+        <QuestionBlocks
+          questionsAnswers={questionsAnswers}
+          userAnswers={userAnswers}
+          setUserAnswers={setUserAnswers}
+        ></QuestionBlocks>
+        <Tally
+          userAnswers={userAnswers}
+          answersWolves={answersWolves}
+          allWolves={allWolves}
+        ></Tally>
         <WolfResult></WolfResult>
         <Social></Social>
         <Donate></Donate>
