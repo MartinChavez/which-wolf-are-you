@@ -7,22 +7,22 @@ import React, {
 } from "react";
 import "./QuestionBlock.css";
 import { ThemeContext } from "./ThemeContext";
-import { IQuestion, IAnswer } from "./Questions";
+import { IQuestion, IAnswer, AnswerId } from "./Questions";
 
 type AnswerProps = {
-  answerId: number;
+  answerId: AnswerId;
   answer: string;
   state: QuestionBlockState;
   dispatch: React.Dispatch<QuestionBlockAction>;
-  userAnswers: Set<number>;
-  setUserAnswers: Dispatch<React.SetStateAction<Set<number>>>;
+  userAnswers: Set<AnswerId>;
+  setUserAnswers: Dispatch<React.SetStateAction<Set<AnswerId>>>;
 };
 
 export type QuestionBlockProps = {
   question: IQuestion;
   answers: IAnswer[];
-  userAnswers: Set<number>;
-  setUserAnswers: Dispatch<React.SetStateAction<Set<number>>>;
+  userAnswers: Set<AnswerId>;
+  setUserAnswers: Dispatch<React.SetStateAction<Set<AnswerId>>>;
 };
 
 function Answer(props: AnswerProps) {
@@ -48,12 +48,12 @@ function Answer(props: AnswerProps) {
     if (answerSelected) {
       props.setUserAnswers((prevUserAnswers) => {
         prevUserAnswers.add(props.answerId);
-        return new Set<number>(prevUserAnswers);
+        return new Set<AnswerId>(prevUserAnswers);
       });
     } else {
       props.setUserAnswers((prevUserAnswers) => {
         prevUserAnswers.delete(props.answerId);
-        return new Set<number>(prevUserAnswers);
+        return new Set<AnswerId>(prevUserAnswers);
       });
     }
   };
@@ -88,7 +88,7 @@ type QuestionBlockState = {
 
 type QuestionBlockAction = {
   type: string;
-  answerId: number;
+  answerId: AnswerId;
 };
 
 const initialState: QuestionBlockState = {

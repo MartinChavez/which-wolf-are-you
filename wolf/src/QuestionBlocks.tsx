@@ -1,11 +1,11 @@
 import React, { Dispatch } from "react";
 import QuestionBlock from "./QuestionBlock";
-import { IQuestion, IAnswer } from "./Questions";
+import { IQuestion, IAnswer, AnswerId } from "./Questions";
 
 export type QuestionBlocksProps = {
   questionsAnswers: Map<IQuestion, IAnswer[]>;
-  setUserAnswers: Dispatch<React.SetStateAction<Set<number>>>;
-  userAnswers: Set<number>;
+  setUserAnswers: Dispatch<React.SetStateAction<Set<AnswerId>>>;
+  userAnswers: Set<AnswerId>;
 };
 
 function QuestionBlocks(props: QuestionBlocksProps) {
