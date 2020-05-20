@@ -1,19 +1,21 @@
 import { getRandomIds } from "./Random";
 
-interface IQuestionAnswer {
-  id: number;
-}
+type QuestionId = number;
+type AnswerId = number;
+type WolfId = number;
 
-export interface IQuestion extends IQuestionAnswer {
+export interface IQuestion {
+  id: QuestionId;
   question: string;
 }
 
-export interface IAnswer extends IQuestionAnswer {
+export interface IAnswer {
+  id: AnswerId;
   answer: string;
 }
 
 export interface IWolf {
-  id: number;
+  id: WolfId;
   name: string;
   face: string;
 }
@@ -52,7 +54,7 @@ let wolves: IWolf[] = [
   { id: 4, name: "Iberian Wolf", face: "🐻" },
 ];
 
-export let questionAnswers = new Map<number, IAnswer[]>();
+export let questionAnswers = new Map<QuestionId, IAnswer[]>();
 questionAnswers.set(1, [
   answers[0],
   answers[1],
@@ -79,7 +81,7 @@ export let GetAllWolves = () => {
 };
 
 export const getAnswersWolves = () => {
-  let answersWolves = new Map<number, IWolf>();
+  let answersWolves = new Map<AnswerId, IWolf>();
 
   answers.forEach((answer) => {
     const answerId = answer.id;
@@ -88,7 +90,7 @@ export const getAnswersWolves = () => {
       1
     );
 
-    const getWolfId = (randomWolfId: Set<number>): number => {
+    const getWolfId = (randomWolfId: Set<WolfId>): WolfId => {
       const wolfId = randomWolfId.values().next().value;
       return wolfId;
     };
