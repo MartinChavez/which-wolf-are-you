@@ -78,13 +78,11 @@ export let GetAllWolves = () => {
   return wolves;
 };
 
-export type AnswerId = Pick<IAnswer, "id">;
-
 export const getAnswersWolves = () => {
-  let answersWolves = new Map<AnswerId, IWolf>();
+  let answersWolves = new Map<number, IWolf>();
 
   answers.forEach((answer) => {
-    const answerId: AnswerId = { id: answer.id };
+    const answerId = answer.id;
     const randomWolfId = getRandomIds(
       wolves.map((w) => w.id),
       1

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { AnswerId, IWolf } from "./Questions";
+import { IWolf } from "./Questions";
 import "./Tally.css";
 
 type WolfRecordProps = {
@@ -9,7 +9,7 @@ type WolfRecordProps = {
 
 type TallyProps = {
   userAnswers: Set<number>;
-  answersWolves: Map<AnswerId, IWolf>;
+  answersWolves: Map<number, IWolf>;
   allWolves: IWolf[];
 };
 
@@ -32,18 +32,15 @@ type WolfTimes = {
 };
 
 function Tally(props: TallyProps) {
-  debugger;
-
   const [wolvesInAnwsersList, setWolvesInAnwsersList] = useState<WolfTimes[]>(
     []
   );
-  // Array.from(wolvesInAnwsers)
 
   useEffect(() => {
     let wolvesInAnwsers: Map<WolfId, number> = new Map<WolfId, number>();
 
-    props.userAnswers.forEach((ua) => {
-      const wolfForAnswer = props.answersWolves.get({ id: ua });
+    props.userAnswers.forEach((userAnswerId) => {
+      const wolfForAnswer = props.answersWolves.get(userAnswerId);
       const wolfIdForAnswer = { id: wolfForAnswer?.id } as WolfId;
 
       if (!wolvesInAnwsers.has(wolfIdForAnswer)) {
@@ -61,7 +58,7 @@ function Tally(props: TallyProps) {
         times: wia[1],
       };
     });
-    debugger;
+
     setWolvesInAnwsersList(list);
   }, [props.answersWolves, props.userAnswers]);
 
@@ -72,7 +69,13 @@ function Tally(props: TallyProps) {
         let wolfForAnswer = props.allWolves.filter(
           (w) => w.id === wt.wolfId.id
         )[0];
-        return <WolfRecord wolf={wolfForAnswer} times={wt.times}></WolfRecord>;
+        return (
+          <WolfRecord
+            key={wolfForAnswer.id}
+            wolf={wolfForAnswer}
+            times={wt.times}
+          ></WolfRecord>
+        );
       })}
     </div>
   );
