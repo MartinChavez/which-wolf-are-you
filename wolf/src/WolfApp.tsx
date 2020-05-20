@@ -11,13 +11,14 @@ import {
   getSessionQuestionsAnswers,
   getAnswersWolves,
   GetAllWolves,
+  AnswerId,
 } from "./Questions";
 
 function WolfApp() {
   const questionsAnswers = useMemo(() => getSessionQuestionsAnswers(), []);
   const answersWolves = useMemo(() => getAnswersWolves(), []);
   const allWolves = useMemo(() => GetAllWolves(), []);
-  const [userAnswers, setUserAnswers] = useState(new Set<number>());
+  const [userAnswers, setUserAnswers] = useState(new Set<AnswerId>());
 
   const [theme, setTheme] = useState(themes.day);
   return (

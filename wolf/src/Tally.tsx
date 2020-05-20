@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { IWolf } from "./Questions";
+import { IWolf, WolfId } from "./Questions";
 import "./Tally.css";
 
 type WolfRecordProps = {
@@ -25,7 +25,7 @@ function WolfRecord(props: WolfRecordProps) {
 
   return <div>{wolfs}</div>;
 }
-type WolfId = Pick<IWolf, "id">;
+
 type WolfTimes = {
   wolfId: WolfId;
   times: number;
@@ -41,7 +41,7 @@ function Tally(props: TallyProps) {
 
     props.userAnswers.forEach((userAnswerId) => {
       const wolfForAnswer = props.answersWolves.get(userAnswerId);
-      const wolfIdForAnswer = { id: wolfForAnswer?.id } as WolfId;
+      const wolfIdForAnswer = wolfForAnswer?.id as WolfId;
 
       if (!wolvesInAnwsers.has(wolfIdForAnswer)) {
         wolvesInAnwsers.set(wolfIdForAnswer, 0);
@@ -67,7 +67,7 @@ function Tally(props: TallyProps) {
       <h4 className="tally">Tally</h4>
       {wolvesInAnwsersList.map((wt: WolfTimes) => {
         let wolfForAnswer = props.allWolves.filter(
-          (w) => w.id === wt.wolfId.id
+          (w) => w.id === wt.wolfId
         )[0];
         return (
           <WolfRecord

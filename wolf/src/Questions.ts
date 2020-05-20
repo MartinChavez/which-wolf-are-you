@@ -1,8 +1,8 @@
 import { getRandomIds } from "./Random";
 
 type QuestionId = number;
-type AnswerId = number;
-type WolfId = number;
+export type AnswerId = number;
+export type WolfId = number;
 
 export interface IQuestion {
   id: QuestionId;
