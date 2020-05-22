@@ -33,14 +33,41 @@ function getWolfResult(
   return allWolves.filter((w) => w.id === maxWolf.wolfId)[0];
 }
 
-function WolfApp() {
+function useWolfApp() {
   const questionsAnswers = useMemo(() => getSessionQuestionsAnswers(), []);
   const answersWolves = useMemo(() => getAnswersWolves(), []);
   const allWolves = useMemo(() => GetAllWolves(), []);
   const [userAnswers, setUserAnswers] = useState(new Set<AnswerId>());
-  const [theme, setTheme] = useState(themes.day);
   const [wolfResult, setWolfResult] = useState(allWolves[0]);
   const [showWolfResult, setShowWolfResult] = useState(false);
+
+  return {
+    questionsAnswers,
+    answersWolves,
+    allWolves,
+    userAnswers,
+    setUserAnswers,
+    wolfResult,
+    setWolfResult,
+    showWolfResult,
+    setShowWolfResult,
+  };
+}
+
+function WolfApp() {
+  const {
+    questionsAnswers,
+    answersWolves,
+    allWolves,
+    userAnswers,
+    setUserAnswers,
+    wolfResult,
+    setWolfResult,
+    showWolfResult,
+    setShowWolfResult,
+  } = useWolfApp();
+
+  const [theme, setTheme] = useState(themes.day);
 
   useEffect(() => {
     let quizFinished = questionsAnswers.size === userAnswers.size;
@@ -52,6 +79,8 @@ function WolfApp() {
     allWolves,
     answersWolves,
     questionsAnswers.size,
+    setShowWolfResult,
+    setWolfResult,
     userAnswers,
     userAnswers.size,
   ]);
