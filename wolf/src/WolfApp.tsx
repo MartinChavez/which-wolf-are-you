@@ -16,15 +16,18 @@ import {
 import { getMaxWolfResult } from "./WolfCounter";
 
 function useWolfApp() {
-  const questionsAnswers = useMemo(() => getSessionQuestionsAnswers(), []);
   const answersWolves = useMemo(() => getAnswersWolves(), []);
   const allWolves = useMemo(() => GetAllWolves(), []);
+  const [sessionQuestionsAnswers, setSessionQuestionsAnswers] = useState(
+    getSessionQuestionsAnswers()
+  );
   const [userAnswers, setUserAnswers] = useState(new Set<AnswerId>());
   const [wolfResult, setWolfResult] = useState(allWolves[0]);
   const [showWolfResult, setShowWolfResult] = useState(false);
 
   return {
-    questionsAnswers,
+    sessionQuestionsAnswers,
+    setSessionQuestionsAnswers,
     answersWolves,
     allWolves,
     userAnswers,
@@ -38,7 +41,8 @@ function useWolfApp() {
 
 function WolfApp() {
   const {
-    questionsAnswers,
+    sessionQuestionsAnswers,
+    setSessionQuestionsAnswers,
     answersWolves,
     allWolves,
     userAnswers,
@@ -52,7 +56,7 @@ function WolfApp() {
   const [theme, setTheme] = useState(themes.day);
 
   useEffect(() => {
-    let quizFinished = questionsAnswers.size === userAnswers.size;
+    let quizFinished = sessionQuestionsAnswers.size === userAnswers.size;
     if (quizFinished) {
       setWolfResult(getMaxWolfResult(userAnswers, answersWolves, allWolves));
       setShowWolfResult(true);
@@ -60,19 +64,27 @@ function WolfApp() {
   }, [
     allWolves,
     answersWolves,
-    questionsAnswers.size,
+    sessionQuestionsAnswers.size,
     setShowWolfResult,
     setWolfResult,
     userAnswers,
     userAnswers.size,
   ]);
 
+  const resetButtonClick = () => {
+    setSessionQuestionsAnswers(getSessionQuestionsAnswers());
+    setUserAnswers(new Set<AnswerId>());
+    setShowWolfResult(false);
+    setWolfResult(allWolves[0]);
+  };
+
   return (
     <ThemeContext.Provider value={theme}>
       <div className="grid" style={{ background: theme.background }}>
+        <button onClick={resetButtonClick}>Reset</button>
         <Header setTheme={setTheme}></Header>
         <QuestionBlocks
-          questionsAnswers={questionsAnswers}
+          questionsAnswers={sessionQuestionsAnswers}
           userAnswers={userAnswers}
           setUserAnswers={setUserAnswers}
         ></QuestionBlocks>
