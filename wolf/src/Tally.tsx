@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { IWolf, WolfId } from "./Questions";
+import { IWolf } from "./Questions";
 import getWolvesInAnswers, { WolfTimes } from "./WolfCounter";
 import "./Tally.css";
 
