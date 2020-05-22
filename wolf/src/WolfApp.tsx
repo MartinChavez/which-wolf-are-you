@@ -27,11 +27,7 @@ function getWolfResult(
     previous: WolfTimes,
     current: WolfTimes
   ) {
-    if (current.times >= previous.times) {
-      return current;
-    }
-
-    return previous;
+    return current.times >= previous.times ? current : previous;
   });
 
   return allWolves.filter((w) => w.id === maxWolf.wolfId)[0];
