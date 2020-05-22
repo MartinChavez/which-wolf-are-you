@@ -12,26 +12,8 @@ import {
   getAnswersWolves,
   GetAllWolves,
   AnswerId,
-  IWolf,
 } from "./Questions";
-import getWolvesInAnswers, { WolfTimes } from "./WolfCounter";
-
-function getWolfResult(
-  userAnswers: Set<AnswerId>,
-  answersWolves: Map<AnswerId, IWolf>,
-  allWolves: IWolf[]
-): IWolf {
-  let wolvesInAnwsers = getWolvesInAnswers(userAnswers, answersWolves);
-
-  var maxWolf = wolvesInAnwsers.reduce(function (
-    previous: WolfTimes,
-    current: WolfTimes
-  ) {
-    return current.times >= previous.times ? current : previous;
-  });
-
-  return allWolves.filter((w) => w.id === maxWolf.wolfId)[0];
-}
+import { getMaxWolfResult } from "./WolfCounter";
 
 function useWolfApp() {
   const questionsAnswers = useMemo(() => getSessionQuestionsAnswers(), []);
@@ -72,7 +54,7 @@ function WolfApp() {
   useEffect(() => {
     let quizFinished = questionsAnswers.size === userAnswers.size;
     if (quizFinished) {
-      setWolfResult(getWolfResult(userAnswers, answersWolves, allWolves));
+      setWolfResult(getMaxWolfResult(userAnswers, answersWolves, allWolves));
       setShowWolfResult(true);
     }
   }, [

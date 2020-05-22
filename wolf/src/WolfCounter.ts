@@ -36,4 +36,21 @@ const getWolvesInAnswers = (
   return wolvesInAnwsersList;
 };
 
+export const getMaxWolfResult = (
+  userAnswers: Set<AnswerId>,
+  answersWolves: Map<AnswerId, IWolf>,
+  allWolves: IWolf[]
+): IWolf => {
+  let wolvesInAnwsers = getWolvesInAnswers(userAnswers, answersWolves);
+
+  var maxWolf = wolvesInAnwsers.reduce(function (
+    previous: WolfTimes,
+    current: WolfTimes
+  ) {
+    return current.times >= previous.times ? current : previous;
+  });
+
+  return allWolves.filter((w) => w.id === maxWolf.wolfId)[0];
+};
+
 export default getWolvesInAnswers;
