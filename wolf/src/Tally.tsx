@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { IWolf, WolfId } from "./Questions";
+import getWolvesInAnswers, { WolfTimes } from "./WolfCounter";
 import "./Tally.css";
 
 type WolfRecordProps = {
@@ -26,40 +27,18 @@ function WolfRecord(props: WolfRecordProps) {
   return <div>{wolfs}</div>;
 }
 
-type WolfTimes = {
-  wolfId: WolfId;
-  times: number;
-};
-
 function Tally(props: TallyProps) {
   const [wolvesInAnwsersList, setWolvesInAnwsersList] = useState<WolfTimes[]>(
     []
   );
 
   useEffect(() => {
-    let wolvesInAnwsers: Map<WolfId, number> = new Map<WolfId, number>();
+    let wolvesInAnwsers = getWolvesInAnswers(
+      props.userAnswers,
+      props.answersWolves
+    );
 
-    props.userAnswers.forEach((userAnswerId) => {
-      const wolfForAnswer = props.answersWolves.get(userAnswerId);
-      const wolfIdForAnswer = wolfForAnswer?.id as WolfId;
-
-      if (!wolvesInAnwsers.has(wolfIdForAnswer)) {
-        wolvesInAnwsers.set(wolfIdForAnswer, 0);
-      }
-
-      let prevCount = wolvesInAnwsers.get(wolfIdForAnswer) as number;
-
-      wolvesInAnwsers.set(wolfIdForAnswer, prevCount + 1);
-    });
-
-    let list = Array.from(wolvesInAnwsers).map((wia) => {
-      return {
-        wolfId: wia[0],
-        times: wia[1],
-      };
-    });
-
-    setWolvesInAnwsersList(list);
+    setWolvesInAnwsersList(wolvesInAnwsers);
   }, [props.answersWolves, props.userAnswers]);
 
   return (

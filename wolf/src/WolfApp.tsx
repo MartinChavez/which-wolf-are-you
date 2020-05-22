@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import "./WolfApp.css";
 import QuestionBlocks from "./QuestionBlocks";
 import Tally from "./Tally";
@@ -12,15 +12,54 @@ import {
   getAnswersWolves,
   GetAllWolves,
   AnswerId,
+  IWolf,
 } from "./Questions";
+import getWolvesInAnswers, { WolfTimes } from "./WolfCounter";
+
+function getWolfResult(
+  userAnswers: Set<AnswerId>,
+  answersWolves: Map<AnswerId, IWolf>,
+  allWolves: IWolf[]
+): IWolf {
+  let wolvesInAnwsers = getWolvesInAnswers(userAnswers, answersWolves);
+
+  var maxWolf = wolvesInAnwsers.reduce(function (
+    previous: WolfTimes,
+    current: WolfTimes
+  ) {
+    if (current.times >= previous.times) {
+      return current;
+    }
+
+    return previous;
+  });
+
+  return allWolves.filter((w) => w.id === maxWolf.wolfId)[0];
+}
 
 function WolfApp() {
   const questionsAnswers = useMemo(() => getSessionQuestionsAnswers(), []);
   const answersWolves = useMemo(() => getAnswersWolves(), []);
   const allWolves = useMemo(() => GetAllWolves(), []);
   const [userAnswers, setUserAnswers] = useState(new Set<AnswerId>());
-
   const [theme, setTheme] = useState(themes.day);
+  const [wolfResult, setWolfResult] = useState(allWolves[0]);
+  const [showWolfResult, setShowWolfResult] = useState(false);
+
+  useEffect(() => {
+    let quizFinished = questionsAnswers.size === userAnswers.size;
+    if (quizFinished) {
+      setWolfResult(getWolfResult(userAnswers, answersWolves, allWolves));
+      setShowWolfResult(true);
+    }
+  }, [
+    allWolves,
+    answersWolves,
+    questionsAnswers.size,
+    userAnswers,
+    userAnswers.size,
+  ]);
+
   return (
     <ThemeContext.Provider value={theme}>
       <div className="grid" style={{ background: theme.background }}>
@@ -35,7 +74,7 @@ function WolfApp() {
           answersWolves={answersWolves}
           allWolves={allWolves}
         ></Tally>
-        <WolfResult></WolfResult>
+        {showWolfResult && <WolfResult wolf={wolfResult}></WolfResult>}
         <Social></Social>
         <Donate></Donate>
       </div>
