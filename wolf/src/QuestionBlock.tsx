@@ -99,6 +99,8 @@ function reducer(state: QuestionBlockState, action: QuestionBlockAction) {
   switch (action.type) {
     case "questionSelected":
       return { questionSelectedForBlock: action.answerId };
+    case "reset":
+      return initialState;
     default:
       throw new Error();
   }
@@ -106,6 +108,10 @@ function reducer(state: QuestionBlockState, action: QuestionBlockAction) {
 
 function QuestionBlock(props: QuestionBlockProps) {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    dispatch({ type: "reset", answerId: 0 });
+  }, [props.question, props.answers]);
 
   return (
     <>

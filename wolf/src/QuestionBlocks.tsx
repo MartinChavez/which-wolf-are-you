@@ -1,4 +1,4 @@
-import React, { Dispatch } from "react";
+import React, { Dispatch, useEffect, useState } from "react";
 import QuestionBlock from "./QuestionBlock";
 import { IQuestion, IAnswer, AnswerId } from "./Questions";
 
@@ -9,7 +9,15 @@ export type QuestionBlocksProps = {
 };
 
 function QuestionBlocks(props: QuestionBlocksProps) {
-  let questionBlocks = Array.from(props.questionsAnswers);
+  const [questionBlocks, setQuestionBlocks] = useState(
+    Array.from(props.questionsAnswers)
+  );
+
+  useEffect(() => {
+    setQuestionBlocks(Array.from(props.questionsAnswers));
+  }, [props.questionsAnswers]);
+
+  //let questionBlocks = Array.from(props.questionsAnswers);
   return (
     <>
       {questionBlocks.map((qb) => {
