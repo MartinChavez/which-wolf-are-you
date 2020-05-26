@@ -91,26 +91,28 @@ type QuestionBlockAction = {
   answerId: AnswerId;
 };
 
-const initialState: QuestionBlockState = {
-  questionSelectedForBlock: 0,
-};
+function init(answerSelected: number) {
+  return { questionSelectedForBlock: answerSelected };
+}
 
 function reducer(state: QuestionBlockState, action: QuestionBlockAction) {
   switch (action.type) {
     case "questionSelected":
       return { questionSelectedForBlock: action.answerId };
     case "reset":
-      return initialState;
+      return init(action.answerId);
     default:
       throw new Error();
   }
 }
 
 function QuestionBlock(props: QuestionBlockProps) {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  let noAnswerSelected: number = 0;
+
+  const [state, dispatch] = useReducer(reducer, noAnswerSelected, init);
 
   useEffect(() => {
-    dispatch({ type: "reset", answerId: 0 });
+    dispatch({ type: "reset", answerId: noAnswerSelected });
   }, [props.question, props.answers]);
 
   return (
