@@ -4,6 +4,7 @@ import "./Header.css";
 
 type HeaderProps = {
   setTheme: Dispatch<SetStateAction<ThemeInfo>>;
+  resetButtonClick: () => void;
 };
 
 function Header(props: HeaderProps) {
@@ -30,6 +31,7 @@ function Header(props: HeaderProps) {
           🌘
         </span>
       </button>
+      <button onClick={props.resetButtonClick}>Reset</button>
     </div>
   );
 }

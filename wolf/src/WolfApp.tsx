@@ -81,8 +81,10 @@ function WolfApp() {
   return (
     <ThemeContext.Provider value={theme}>
       <div className="grid" style={{ background: theme.background }}>
-        <button onClick={resetButtonClick}>Reset</button>
-        <Header setTheme={setTheme}></Header>
+        <Header
+          setTheme={setTheme}
+          resetButtonClick={resetButtonClick}
+        ></Header>
         <QuestionBlocks
           questionsAnswers={sessionQuestionsAnswers}
           userAnswers={userAnswers}
