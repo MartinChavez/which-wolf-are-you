@@ -17,7 +17,6 @@ function QuestionBlocks(props: QuestionBlocksProps) {
     setQuestionBlocks(Array.from(props.questionsAnswers));
   }, [props.questionsAnswers]);
 
-  //let questionBlocks = Array.from(props.questionsAnswers);
   return (
     <>
       {questionBlocks.map((qb) => {
