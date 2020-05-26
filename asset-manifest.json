@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/which-wolf-are-you/static/css/main.601835ae.chunk.css",
+    "main.js": "/which-wolf-are-you/static/js/main.b3b7c931.chunk.js",
+    "main.js.map": "/which-wolf-are-you/static/js/main.b3b7c931.chunk.js.map",
+    "runtime-main.js": "/which-wolf-are-you/static/js/runtime-main.8cf87baf.js",
+    "runtime-main.js.map": "/which-wolf-are-you/static/js/runtime-main.8cf87baf.js.map",
+    "static/js/2.32460686.chunk.js": "/which-wolf-are-you/static/js/2.32460686.chunk.js",
+    "static/js/2.32460686.chunk.js.map": "/which-wolf-are-you/static/js/2.32460686.chunk.js.map",
+    "index.html": "/which-wolf-are-you/index.html",
+    "precache-manifest.004ce88cd5414e8c3d48b04bd9a3f2a4.js": "/which-wolf-are-you/precache-manifest.004ce88cd5414e8c3d48b04bd9a3f2a4.js",
+    "service-worker.js": "/which-wolf-are-you/service-worker.js",
+    "static/css/main.601835ae.chunk.css.map": "/which-wolf-are-you/static/css/main.601835ae.chunk.css.map",
+    "static/js/2.32460686.chunk.js.LICENSE.txt": "/which-wolf-are-you/static/js/2.32460686.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8cf87baf.js",
+    "static/js/2.32460686.chunk.js",
+    "static/css/main.601835ae.chunk.css",
+    "static/js/main.b3b7c931.chunk.js"
+  ]
+}
