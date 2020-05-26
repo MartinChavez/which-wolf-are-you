@@ -24,6 +24,7 @@ function useWolfApp() {
   const [userAnswers, setUserAnswers] = useState(new Set<AnswerId>());
   const [wolfResult, setWolfResult] = useState(allWolves[0]);
   const [showWolfResult, setShowWolfResult] = useState(false);
+  const [showTally, setShowTally] = useState(false);
 
   return {
     sessionQuestionsAnswers,
@@ -36,6 +37,8 @@ function useWolfApp() {
     setWolfResult,
     showWolfResult,
     setShowWolfResult,
+    showTally,
+    setShowTally,
   };
 }
 
@@ -51,6 +54,8 @@ function WolfApp() {
     setWolfResult,
     showWolfResult,
     setShowWolfResult,
+    showTally,
+    setShowTally,
   } = useWolfApp();
 
   const [theme, setTheme] = useState(themes.day);
@@ -71,11 +76,18 @@ function WolfApp() {
     userAnswers.size,
   ]);
 
+  useEffect(() => {
+    if (userAnswers.size > 0) {
+      setShowTally(true);
+    }
+  }, [setShowTally, userAnswers]);
+
   const resetButtonClick = () => {
     setSessionQuestionsAnswers(getSessionQuestionsAnswers());
     setUserAnswers(new Set<AnswerId>());
     setShowWolfResult(false);
     setWolfResult(allWolves[0]);
+    setShowTally(false);
   };
 
   return (
@@ -90,11 +102,13 @@ function WolfApp() {
           userAnswers={userAnswers}
           setUserAnswers={setUserAnswers}
         ></QuestionBlocks>
-        <Tally
-          userAnswers={userAnswers}
-          answersWolves={answersWolves}
-          allWolves={allWolves}
-        ></Tally>
+        {showTally && (
+          <Tally
+            userAnswers={userAnswers}
+            answersWolves={answersWolves}
+            allWolves={allWolves}
+          ></Tally>
+        )}
         {showWolfResult && <WolfResult wolf={wolfResult}></WolfResult>}
         <Social></Social>
         <Donate></Donate>
