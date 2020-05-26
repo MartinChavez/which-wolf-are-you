@@ -113,7 +113,7 @@ function QuestionBlock(props: QuestionBlockProps) {
 
   useEffect(() => {
     dispatch({ type: "reset", answerId: noAnswerSelected });
-  }, [props.question, props.answers]);
+  }, [props.question, props.answers, noAnswerSelected]);
 
   return (
     <>
