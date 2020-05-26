@@ -3,7 +3,6 @@ import "./WolfApp.css";
 import QuestionBlocks from "./QuestionBlocks";
 import Tally from "./Tally";
 import WolfResult from "./WolfResult";
-import Social from "./Social";
 import Donate from "./Donate";
 import Header from "./Header";
 import { ThemeContext, themes } from "./ThemeContext";
@@ -110,7 +109,6 @@ function WolfApp() {
           ></Tally>
         )}
         {showWolfResult && <WolfResult wolf={wolfResult}></WolfResult>}
-        <Social></Social>
         <Donate></Donate>
       </div>
     </ThemeContext.Provider>
