@@ -33,8 +33,7 @@ function Answer(props: AnswerProps) {
     props.dispatch({ type: "questionSelected", answerId: props.answerId });
   };
 
-  const answerSelected =
-    props.state.questionSelectedForBlock === props.answerId;
+  const answerSelected = props.state.answerSelectedForBlock === props.answerId;
 
   const handleBackgroundColor = () => {
     if (answerSelected) {
@@ -60,12 +59,12 @@ function Answer(props: AnswerProps) {
 
   useEffect(handleBackgroundColor, [
     props.answerId,
-    props.state.questionSelectedForBlock,
+    props.state.answerSelectedForBlock,
   ]);
 
   useEffect(handleUserAnswers, [
     props.answerId,
-    props.state.questionSelectedForBlock,
+    props.state.answerSelectedForBlock,
   ]);
 
   return (
@@ -83,7 +82,7 @@ function Answer(props: AnswerProps) {
 }
 
 type QuestionBlockState = {
-  questionSelectedForBlock: number;
+  answerSelectedForBlock: number;
 };
 
 type QuestionBlockAction = {
@@ -92,13 +91,13 @@ type QuestionBlockAction = {
 };
 
 function init(answerSelected: number) {
-  return { questionSelectedForBlock: answerSelected };
+  return { answerSelectedForBlock: answerSelected };
 }
 
 function reducer(state: QuestionBlockState, action: QuestionBlockAction) {
   switch (action.type) {
     case "questionSelected":
-      return { questionSelectedForBlock: action.answerId };
+      return { answerSelectedForBlock: action.answerId };
     case "reset":
       return init(action.answerId);
     default:
@@ -108,7 +107,6 @@ function reducer(state: QuestionBlockState, action: QuestionBlockAction) {
 
 function QuestionBlock(props: QuestionBlockProps) {
   let noAnswerSelected: number = 0;
-
   const [state, dispatch] = useReducer(reducer, noAnswerSelected, init);
 
   useEffect(() => {
