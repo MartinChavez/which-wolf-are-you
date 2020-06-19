@@ -16,6 +16,7 @@ type AnswerProps = {
   dispatch: React.Dispatch<QuestionBlockAction>;
   userAnswers: Set<AnswerId>;
   setUserAnswers: Dispatch<React.SetStateAction<Set<AnswerId>>>;
+  onAnswerSelected: () => void;
 };
 
 export type QuestionBlockProps = {
@@ -23,6 +24,7 @@ export type QuestionBlockProps = {
   answers: IAnswer[];
   userAnswers: Set<AnswerId>;
   setUserAnswers: Dispatch<React.SetStateAction<Set<AnswerId>>>;
+  onAnswerSelected: () => void;
 };
 
 function Answer(props: AnswerProps) {
@@ -31,6 +33,7 @@ function Answer(props: AnswerProps) {
 
   const buttonClick = () => {
     props.dispatch({ type: "questionSelected", answerId: props.answerId });
+    props.onAnswerSelected();
   };
 
   const answerSelected = props.state.answerSelectedForBlock === props.answerId;
@@ -125,6 +128,7 @@ function QuestionBlock(props: QuestionBlockProps) {
           dispatch={dispatch}
           userAnswers={props.userAnswers}
           setUserAnswers={props.setUserAnswers}
+          onAnswerSelected={props.onAnswerSelected}
         ></Answer>
       ))}
     </>
