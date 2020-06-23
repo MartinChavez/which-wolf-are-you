@@ -42,11 +42,20 @@ function QuestionBlocks(props: QuestionBlocksProps) {
   );
 
   const [displayedIndex, setDisplayedIndex] = useState(0);
+  const [showBackButton, setShowBackButton] = useState(false);
 
   useEffect(() => {
     setQuestionBlocks(Array.from(props.questionsAnswers));
     setDisplayedIndex(0);
   }, [props.questionsAnswers]);
+
+  useEffect(() => {
+    if (displayedIndex > 0) {
+      setShowBackButton(true);
+    } else {
+      setShowBackButton(false);
+    }
+  }, [displayedIndex]);
 
   const onBackButtonClick = () => {
     if (displayedIndex > 0) {
@@ -58,7 +67,7 @@ function QuestionBlocks(props: QuestionBlocksProps) {
     <>
       <div>
         <h4>Questions</h4>
-        <button onClick={onBackButtonClick}> Back </button>
+        {showBackButton && <button onClick={onBackButtonClick}> Back </button>}
         <QuestionBlockOnDisplay
           question={questionBlocks[displayedIndex][0]}
           answers={questionBlocks[displayedIndex][1]}
