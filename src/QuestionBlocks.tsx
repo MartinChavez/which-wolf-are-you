@@ -1,6 +1,6 @@
 import React, { Dispatch, useEffect, useState } from "react";
 import QuestionBlock from "./QuestionBlock";
-import { IQuestion, IAnswer, AnswerId } from "./Questions";
+import { IQuestion, IAnswer, AnswerId, QuestionId } from "./Questions";
 
 export type QuestionBlocksProps = {
   questionsAnswers: Map<IQuestion, IAnswer[]>;
@@ -8,45 +8,22 @@ export type QuestionBlocksProps = {
   userAnswers: Set<AnswerId>;
 };
 
-type QuestionBlockOnDisplayProps = {
-  question: IQuestion;
-  answers: IAnswer[];
-  userAnswers: Set<AnswerId>;
-  setUserAnswers: Dispatch<React.SetStateAction<Set<AnswerId>>>;
-  displayedIndex: number;
-  setDisplayedIndex: Dispatch<React.SetStateAction<number>>;
-  questionBlocks: [IQuestion, IAnswer[]][];
-};
-
-function QuestionBlockOnDisplay(props: QuestionBlockOnDisplayProps) {
-  const onAnswerSelected = () => {
-    if (props.displayedIndex < props.questionBlocks.length - 1) {
-      props.setDisplayedIndex(props.displayedIndex + 1);
-    }
-  };
-
-  return (
-    <QuestionBlock
-      question={props.question}
-      answers={props.answers}
-      userAnswers={props.userAnswers}
-      setUserAnswers={props.setUserAnswers}
-      onAnswerSelected={onAnswerSelected}
-    ></QuestionBlock>
-  );
-}
-
 function QuestionBlocks(props: QuestionBlocksProps) {
   const [questionBlocks, setQuestionBlocks] = useState(
     Array.from(props.questionsAnswers)
   );
-
+  const [questionToAnswerSelected, setQuestionToAnswerSelected] = useState(
+    new Map<QuestionId, AnswerId>()
+  );
   const [displayedIndex, setDisplayedIndex] = useState(0);
   const [showBackButton, setShowBackButton] = useState(false);
+  const question = questionBlocks[displayedIndex][0];
+  const answers = questionBlocks[displayedIndex][1];
 
   useEffect(() => {
     setQuestionBlocks(Array.from(props.questionsAnswers));
     setDisplayedIndex(0);
+    setQuestionToAnswerSelected(new Map<QuestionId, AnswerId>());
   }, [props.questionsAnswers]);
 
   useEffect(() => {
@@ -63,20 +40,37 @@ function QuestionBlocks(props: QuestionBlocksProps) {
     }
   };
 
+  const onAnswerSelected = (answerId: AnswerId) => {
+    if (displayedIndex < questionBlocks.length - 1) {
+      setDisplayedIndex(displayedIndex + 1);
+    }
+
+    if (questionToAnswerSelected.get(question.id) !== answerId) {
+      props.setUserAnswers((prevUserAnswers) => {
+        prevUserAnswers.delete(questionToAnswerSelected.get(question.id)!);
+        return new Set<AnswerId>(prevUserAnswers);
+      });
+    }
+
+    props.setUserAnswers((prevUserAnswers) => {
+      prevUserAnswers.add(answerId);
+      return new Set<AnswerId>(prevUserAnswers);
+    });
+
+    questionToAnswerSelected.set(question.id, answerId);
+  };
+
   return (
     <>
       <div>
         <h4>Questions</h4>
         {showBackButton && <button onClick={onBackButtonClick}> Back </button>}
-        <QuestionBlockOnDisplay
-          question={questionBlocks[displayedIndex][0]}
-          answers={questionBlocks[displayedIndex][1]}
-          userAnswers={props.userAnswers}
-          setUserAnswers={props.setUserAnswers}
-          displayedIndex={displayedIndex}
-          setDisplayedIndex={setDisplayedIndex}
-          questionBlocks={questionBlocks}
-        ></QuestionBlockOnDisplay>
+        <QuestionBlock
+          question={question}
+          answers={answers}
+          onAnswerSelected={onAnswerSelected}
+          selectedAnswerId={questionToAnswerSelected.get(question.id)}
+        ></QuestionBlock>
       </div>
     </>
   );

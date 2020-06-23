@@ -13,7 +13,7 @@ type AnswerProps = {
 export type QuestionBlockProps = {
   question: IQuestion;
   answers: IAnswer[];
-  answerIdForSelected?: number;
+  selectedAnswerId?: number;
   onAnswerSelected: (answerId: AnswerId) => void;
 };
 
@@ -49,7 +49,7 @@ function QuestionBlock(props: QuestionBlockProps) {
           answer={ans.answer}
           answerId={ans.id}
           onAnswerSelected={props.onAnswerSelected}
-          isSelected={ans.id === props.answerIdForSelected}
+          isSelected={ans.id === props.selectedAnswerId}
         ></Answer>
       ))}
     </>
