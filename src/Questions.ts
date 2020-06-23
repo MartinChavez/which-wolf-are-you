@@ -1,6 +1,6 @@
 import { getRandomIds } from "./Random";
 
-type QuestionId = number;
+export type QuestionId = number;
 export type AnswerId = number;
 export type WolfId = number;
 
