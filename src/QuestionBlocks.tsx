@@ -45,14 +45,11 @@ function QuestionBlocks(props: QuestionBlocksProps) {
       setDisplayedIndex(displayedIndex + 1);
     }
 
-    if (questionToAnswerSelected.get(question.id) !== answerId) {
-      props.setUserAnswers((prevUserAnswers) => {
-        prevUserAnswers.delete(questionToAnswerSelected.get(question.id)!);
-        return new Set<AnswerId>(prevUserAnswers);
-      });
-    }
-
+    let prevAnswerId = questionToAnswerSelected.get(question.id);
     props.setUserAnswers((prevUserAnswers) => {
+      if (prevAnswerId) {
+        prevUserAnswers.delete(prevAnswerId);
+      }
       prevUserAnswers.add(answerId);
       return new Set<AnswerId>(prevUserAnswers);
     });
