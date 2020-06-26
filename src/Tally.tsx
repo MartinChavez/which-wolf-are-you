@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { IWolf } from "./Questions";
 import getWolvesInAnswers, { WolfTimes } from "./WolfCounter";
-import "./Tally.css";
 
 type WolfRecordProps = {
   times: number;
@@ -42,8 +41,8 @@ function Tally(props: TallyProps) {
   }, [props.answersWolves, props.userAnswers]);
 
   return (
-    <div>
-      <h4 className="tally">Tally</h4>
+    <div className="tally">
+      <h4>Tally</h4>
       {wolvesInAnwsersList.map((wt: WolfTimes) => {
         let wolfForAnswer = props.allWolves.filter(
           (w) => w.id === wt.wolfId

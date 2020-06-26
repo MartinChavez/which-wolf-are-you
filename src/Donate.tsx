@@ -6,7 +6,7 @@ function Donate() {
   const theme = useContext(ThemeContext);
   return (
     <div>
-      <h4 className="donate">Donate</h4>
+      <h4>Donate</h4>
       <a
         href="https://wolf.org/support/donate-options/"
         style={{ color: theme.hyperlinkColor }}

@@ -59,7 +59,7 @@ function QuestionBlocks(props: QuestionBlocksProps) {
 
   return (
     <>
-      <div>
+      <div className="question">
         <h4>Questions</h4>
         {showBackButton && <button onClick={onBackButtonClick}> Back </button>}
         <QuestionBlock

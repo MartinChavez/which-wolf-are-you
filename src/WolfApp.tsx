@@ -91,7 +91,7 @@ function WolfApp() {
 
   return (
     <ThemeContext.Provider value={theme}>
-      <div className="grid" style={{ background: theme.background }}>
+      <div className="wolf-app" style={{ background: theme.background }}>
         <Header
           setTheme={setTheme}
           resetButtonClick={resetButtonClick}
@@ -109,7 +109,9 @@ function WolfApp() {
           ></Tally>
         )}
         {showWolfResult && <WolfResult wolf={wolfResult}></WolfResult>}
-        <Donate></Donate>
+        <div className="footer">
+          <Donate></Donate>
+        </div>
       </div>
     </ThemeContext.Provider>
   );

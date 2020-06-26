@@ -19,8 +19,8 @@ function Header(props: HeaderProps) {
   };
 
   return (
-    <div>
-      <h4 className="header">Header</h4>
+    <div className="header">
+      <h4>Header</h4>
       <button name="Day" onClick={themButtonClick}>
         <span role="img" aria-label="Day">
           ☀️

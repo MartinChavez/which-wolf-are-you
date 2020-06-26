@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import "./WolfResult.css";
 import { ThemeContext } from "./ThemeContext";
 import { IWolf } from "./Questions";
 
@@ -10,8 +9,8 @@ type WolfResultProps = {
 function WolfResult(props: WolfResultProps) {
   const theme = useContext(ThemeContext);
   return (
-    <div>
-      <h4 className="wolf-result">Wolf Result</h4>
+    <div className="wolf-result">
+      <h4>Wolf Result</h4>
       <span role="img" aria-label="wolf-times">
         {props.wolf.face}
       </span>

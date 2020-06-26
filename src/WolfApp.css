@@ -1,2 +1,29 @@
-.grid {
+.wolf-app {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas:
+    "header header header"
+    "question tally wolf-result"
+    "footer footer footer";
+}
+
+.header {
+  grid-area: header;
+}
+
+.question {
+  grid-area: question;
+}
+
+.tally {
+  grid-area: tally;
+}
+
+.wolf-result {
+  grid-area: wolf-result;
+}
+
+.footer {
+  grid-area: footer;
 }
