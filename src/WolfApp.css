@@ -5,7 +5,7 @@
   grid-template-areas:
     "sun-moon . reset"
     "question tally wolf-result"
-    "footer footer footer";
+    "left-grass center-grass right-grass";
   height: 100vh;
 }
 
@@ -33,6 +33,14 @@
   grid-area: wolf-result;
 }
 
-.footer {
-  grid-area: footer;
+.left-grass {
+  grid-area: left-grass;
+}
+
+.center-grass {
+  grid-area: center-grass;
+}
+
+.right-grass {
+  grid-area: right-grass;
 }

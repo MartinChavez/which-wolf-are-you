@@ -3,7 +3,6 @@ import "./WolfApp.css";
 import QuestionBlocks from "./QuestionBlocks";
 import Tally from "./Tally";
 import WolfResult from "./WolfResult";
-import Donate from "./Donate";
 import SunMoon from "./SunMoon";
 import Reset from "./Reset";
 import { ThemeContext, themes } from "./ThemeContext";
@@ -14,6 +13,7 @@ import {
   AnswerId,
 } from "./Questions";
 import { getMaxWolfResult } from "./WolfCounter";
+import Grass from "./Grass";
 
 function useWolfApp() {
   const answersWolves = useMemo(() => getAnswersWolves(), []);
@@ -108,9 +108,9 @@ function WolfApp() {
           ></Tally>
         )}
         {showWolfResult && <WolfResult wolf={wolfResult}></WolfResult>}
-        <div className="footer">
-          <Donate></Donate>
-        </div>
+        <Grass className="left-grass"></Grass>
+        <Grass className="center-grass"></Grass>
+        <Grass className="right-grass"></Grass>
       </div>
     </ThemeContext.Provider>
   );
