@@ -35,6 +35,4 @@
 
 .footer {
   grid-area: footer;
-  align-self: center;
-  justify-self: center;
 }
