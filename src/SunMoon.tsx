@@ -3,7 +3,6 @@ import { themes, ThemeInfo } from "./ThemeContext";
 
 type SunMoonProps = {
   setTheme: Dispatch<SetStateAction<ThemeInfo>>;
-  resetButtonClick: () => void;
 };
 
 function SunMoon(props: SunMoonProps) {
@@ -37,8 +36,6 @@ function SunMoon(props: SunMoonProps) {
           </span>
         </button>
       )}
-
-      {/* <button onClick={props.resetButtonClick}>Reset</button> */}
     </div>
   );
 }
