@@ -6,6 +6,7 @@
     "sun-moon . reset"
     "question tally wolf-result"
     "footer footer footer";
+  height: 100vh;
 }
 
 .sun-moon {
@@ -34,4 +35,6 @@
 
 .footer {
   grid-area: footer;
+  align-self: center;
+  justify-self: center;
 }
