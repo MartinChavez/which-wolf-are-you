@@ -61,13 +61,13 @@ function QuestionBlocks(props: QuestionBlocksProps) {
     <>
       <div className="question">
         <h4>Questions</h4>
-        {showBackButton && <button onClick={onBackButtonClick}> Back </button>}
         <QuestionBlock
           question={question}
           answers={answers}
           onAnswerSelected={onAnswerSelected}
           selectedAnswerId={questionToAnswerSelected.get(question.id)}
         ></QuestionBlock>
+        {showBackButton && <button onClick={onBackButtonClick}> Back </button>}
       </div>
     </>
   );

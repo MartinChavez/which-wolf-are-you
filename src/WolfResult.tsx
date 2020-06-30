@@ -10,7 +10,7 @@ function WolfResult(props: WolfResultProps) {
   const theme = useContext(ThemeContext);
   return (
     <div className="wolf-result">
-      <h4>Wolf Result</h4>
+      <h4>Your inner wolf</h4>
       <span role="img" aria-label="wolf-times">
         {props.wolf.face}
       </span>

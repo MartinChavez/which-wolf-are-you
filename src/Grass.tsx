@@ -8,7 +8,7 @@ type GrassProps = {
 function Grass(props: GrassProps) {
   return (
     <div className={props.className}>
-      <img src={grass} alt="Grass" />;
+      <img src={grass} alt="Grass" />
     </div>
   );
 }

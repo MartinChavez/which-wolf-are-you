@@ -23,14 +23,20 @@
 
 .question {
   grid-area: question;
+  align-self: top;
+  justify-self: center;
 }
 
 .tally {
   grid-area: tally;
+  align-self: top;
+  justify-self: center;
 }
 
 .wolf-result {
   grid-area: wolf-result;
+  align-self: top;
+  justify-self: center;
 }
 
 .left-grass {
