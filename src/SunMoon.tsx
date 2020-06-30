@@ -1,13 +1,12 @@
 import React, { useState, Dispatch, SetStateAction } from "react";
 import { themes, ThemeInfo } from "./ThemeContext";
-import "./Header.css";
 
-type HeaderProps = {
+type SunMoonProps = {
   setTheme: Dispatch<SetStateAction<ThemeInfo>>;
   resetButtonClick: () => void;
 };
 
-function Header(props: HeaderProps) {
+function SunMoon(props: SunMoonProps) {
   const [showSun, setShowSun] = useState(true);
 
   let themButtonClick = (
@@ -23,8 +22,7 @@ function Header(props: HeaderProps) {
   };
 
   return (
-    <div className="header">
-      <h4>Header</h4>
+    <div className="sun-moon">
       {showSun && (
         <button name="Day" onClick={themButtonClick}>
           <span role="img" aria-label="Day">
@@ -40,9 +38,9 @@ function Header(props: HeaderProps) {
         </button>
       )}
 
-      <button onClick={props.resetButtonClick}>Reset</button>
+      {/* <button onClick={props.resetButtonClick}>Reset</button> */}
     </div>
   );
 }
 
-export default Header;
+export default SunMoon;

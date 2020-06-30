@@ -3,13 +3,15 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-areas:
-    "header header header"
+    "sun-moon . header"
     "question tally wolf-result"
     "footer footer footer";
 }
 
-.header {
-  grid-area: header;
+.sun-moon {
+  grid-area: sun-moon;
+  align-self: center;
+  justify-self: center;
 }
 
 .question {
