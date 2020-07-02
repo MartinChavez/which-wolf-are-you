@@ -3,7 +3,7 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-areas:
-    "sun-moon . reset"
+    "sun-moon title reset"
     "question tally wolf-result"
     "left-grass center-grass right-grass";
   height: 100vh;
@@ -19,6 +19,12 @@
   width: 100%;
   height: 200px;
   cursor: pointer;
+}
+
+.title {
+  grid-area: title;
+  align-self: center;
+  justify-self: center;
 }
 
 .reset {

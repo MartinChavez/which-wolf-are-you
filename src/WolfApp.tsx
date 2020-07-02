@@ -4,6 +4,7 @@ import QuestionBlocks from "./QuestionBlocks";
 import Tally from "./Tally";
 import WolfResult from "./WolfResult";
 import SunMoon from "./SunMoon";
+import Title from "./Title";
 import Reset from "./Reset";
 import { ThemeContext, themes } from "./ThemeContext";
 import {
@@ -94,6 +95,7 @@ function WolfApp() {
     <ThemeContext.Provider value={theme}>
       <div className="wolf-app" style={{ background: theme.background }}>
         <SunMoon setTheme={setTheme}></SunMoon>
+        <Title></Title>
         <Reset resetButtonClick={resetButtonClick}></Reset>
         <QuestionBlocks
           questionsAnswers={sessionQuestionsAnswers}
