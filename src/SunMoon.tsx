@@ -24,24 +24,8 @@ function SunMoon(props: SunMoonProps) {
 
   return (
     <div className="sun-moon">
-      {showSun && (
-        <img
-          src={sun}
-          alt="Sun"
-          onClick={themButtonClick}
-          width="100%"
-          height="200px"
-        ></img>
-      )}
-      {!showSun && (
-        <img
-          src={moon}
-          alt="Moon"
-          onClick={themButtonClick}
-          width="100%"
-          height="200px"
-        ></img>
-      )}
+      {showSun && <img src={sun} alt="Sun" onClick={themButtonClick}></img>}
+      {!showSun && <img src={moon} alt="Moon" onClick={themButtonClick}></img>}
     </div>
   );
 }
