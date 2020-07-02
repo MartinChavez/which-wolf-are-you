@@ -1,6 +1,7 @@
 import React, { useState, Dispatch, SetStateAction } from "react";
 import { themes, ThemeInfo } from "./ThemeContext";
 import sun from "./Sun.svg";
+import moon from "./Moon.svg";
 
 type SunMoonProps = {
   setTheme: Dispatch<SetStateAction<ThemeInfo>>;
@@ -23,22 +24,8 @@ function SunMoon(props: SunMoonProps) {
 
   return (
     <div className="sun-moon">
-      {showSun && (
-        <img
-          src={sun}
-          alt="Sun"
-          onClick={themButtonClick}
-          width="100%"
-          height="200px"
-        ></img>
-      )}
-      {!showSun && (
-        <button name="Night">
-          <span role="img" aria-label="Day">
-            🌘
-          </span>
-        </button>
-      )}
+      {showSun && <img src={sun} alt="Sun" onClick={themButtonClick}></img>}
+      {!showSun && <img src={moon} alt="Moon" onClick={themButtonClick}></img>}
     </div>
   );
 }
