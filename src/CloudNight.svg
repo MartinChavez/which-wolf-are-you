@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 629 377" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,-1079,-1310)">
+        <g id="CloudNight" transform="matrix(1,0,0,1,834.772,1.29087)">
+            <g>
+                <path d="M584.57,1331.26C605.231,1317.34 630.139,1309.25 656.912,1309.35C699.876,1309.51 737.878,1330.73 761.173,1363.18C824.441,1371.56 873.22,1425.89 872.974,1491.39C872.759,1548.61 835.193,1597.03 783.466,1613.63C760.069,1647.03 721.226,1668.84 677.38,1668.67C648.04,1668.56 621.014,1658.63 599.403,1642.01C575.703,1668.39 541.278,1684.95 503.049,1684.81C452.255,1684.62 408.397,1655 387.584,1612.18C382.705,1612.72 377.737,1612.99 372.702,1612.97C301.592,1612.71 244.076,1554.76 244.343,1483.65C244.61,1412.54 302.559,1355.02 373.669,1355.29C386.69,1355.34 399.254,1357.32 411.085,1360.96C434.728,1329.87 472.157,1309.85 514.184,1310.01C540.181,1310.11 564.362,1317.91 584.57,1331.26Z" style="fill:url(#_Radial1);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,61.7825,-47.105)">
+                <text x="309.31px" y="1635px" style="font-family:'NorthernSoul-Caps', 'NorthernSoul';font-size:288px;fill:rgb(217,217,217);">RESET</text>
+            </g>
+        </g>
+    </g>
+    <defs>
+        <radialGradient id="_Radial1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(629.598,0,0,376.429,243.86,1497.08)"><stop offset="0" style="stop-color:rgb(16,23,61);stop-opacity:1"/><stop offset="1" style="stop-color:rgb(1,97,142);stop-opacity:1"/></radialGradient>
+    </defs>
+</svg>
