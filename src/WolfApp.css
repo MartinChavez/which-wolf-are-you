@@ -1,15 +1,13 @@
 @supports (grid-area: auto) {
-  @media screen and (min-width: 900px) {
-    .wolf-app {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr;
-      grid-template-areas:
-        "sun-moon title reset"
-        "question tally wolf-result"
-        "left-grass center-grass right-grass";
-      height: 100vh;
-    }
+  .wolf-app {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+      "sun-moon title reset"
+      "question tally wolf-result"
+      "left-grass center-grass right-grass";
+    height: 100vh;
   }
 
   .sun-moon {
@@ -28,6 +26,13 @@
     grid-area: title;
     align-self: center;
     justify-self: center;
+  }
+
+  .compact-title {
+    grid-area: compact-title;
+    align-self: center;
+    justify-self: center;
+    display: none;
   }
 
   .reset {
@@ -64,5 +69,22 @@
 
   .right-grass {
     grid-area: right-grass;
+  }
+
+  @media screen and (max-width: 1142px) {
+    .wolf-app {
+      grid-template-areas:
+        "sun-moon compact-title reset"
+        "question tally wolf-result"
+        "left-grass center-grass right-grass";
+    }
+
+    .title {
+      display: none;
+    }
+
+    .compact-title {
+      display: grid;
+    }
   }
 }

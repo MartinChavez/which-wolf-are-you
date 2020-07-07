@@ -1,9 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
 import { ThemeContext } from "./ThemeContext";
-import titleWhite from "./Title White.svg";
-import titleDark from "./Title Black.svg";
+import titleWhite from "./Compact Title White.svg";
+import titleDark from "./Compact Title Black.svg";
 
-function Title() {
+function CompactTitle() {
   const theme = useContext(ThemeContext);
 
   const [selectedTitle, setSelectedTitle] = useState(titleDark);
@@ -13,10 +13,10 @@ function Title() {
   }, [theme.name]);
 
   return (
-    <div className="title">
-      <img src={selectedTitle} alt="Logo" height="65px" width="auto" />
+    <div className="compact-title">
+      <img src={selectedTitle} alt="Logo" height="200px" width="auto" />
     </div>
   );
 }
 
-export default Title;
+export default CompactTitle;
