@@ -1,64 +1,68 @@
-.wolf-app {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-template-areas:
-    "sun-moon title reset"
-    "question tally wolf-result"
-    "left-grass center-grass right-grass";
-  height: 100vh;
-}
+@supports (grid-area: auto) {
+  @media screen and (min-width: 900px) {
+    .wolf-app {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      grid-template-areas:
+        "sun-moon title reset"
+        "question tally wolf-result"
+        "left-grass center-grass right-grass";
+      height: 100vh;
+    }
+  }
 
-.sun-moon {
-  grid-area: sun-moon;
-  align-self: center;
-  justify-self: center;
-}
+  .sun-moon {
+    grid-area: sun-moon;
+    align-self: center;
+    justify-self: center;
+  }
 
-.sun-moon > img {
-  width: 100%;
-  height: 200px;
-  cursor: pointer;
-}
+  .sun-moon > img {
+    width: 100%;
+    height: 200px;
+    cursor: pointer;
+  }
 
-.title {
-  grid-area: title;
-  align-self: center;
-  justify-self: center;
-}
+  .title {
+    grid-area: title;
+    align-self: center;
+    justify-self: center;
+  }
 
-.reset {
-  grid-area: reset;
-  align-self: center;
-  justify-self: center;
-}
+  .reset {
+    grid-area: reset;
+    align-self: center;
+    justify-self: center;
+  }
 
-.question {
-  grid-area: question;
-  align-self: top;
-  justify-self: center;
-}
+  .question {
+    grid-area: question;
+    align-self: top;
+    justify-self: center;
+  }
 
-.tally {
-  grid-area: tally;
-  align-self: top;
-  justify-self: center;
-}
+  .tally {
+    grid-area: tally;
+    align-self: top;
+    justify-self: center;
+  }
 
-.wolf-result {
-  grid-area: wolf-result;
-  align-self: top;
-  justify-self: center;
-}
+  .wolf-result {
+    grid-area: wolf-result;
+    align-self: top;
+    justify-self: center;
+  }
 
-.left-grass {
-  grid-area: left-grass;
-}
+  .left-grass {
+    grid-area: left-grass;
+  }
 
-.center-grass {
-  grid-area: center-grass;
-}
+  .center-grass {
+    grid-area: center-grass;
+  }
 
-.right-grass {
-  grid-area: right-grass;
+  .right-grass {
+    grid-area: right-grass;
+  }
 }

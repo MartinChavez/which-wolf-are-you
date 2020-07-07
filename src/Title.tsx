@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { ThemeContext } from "./ThemeContext";
-import titleWhite from "./Title White.svg";
+import titleWhite from "./Title-White.svg";
 import titleDark from "./Title.svg";
 
 function Title() {
