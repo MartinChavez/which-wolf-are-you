@@ -22,7 +22,7 @@ function Reset(props: ResetProps) {
         onClick={props.resetButtonClick}
         src={selectedCloud}
         alt="Cloud"
-        height="200px"
+        height="150px"
         width="auto"
       />
     </div>
