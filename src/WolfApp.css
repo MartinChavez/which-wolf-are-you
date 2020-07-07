@@ -41,6 +41,10 @@
     justify-self: center;
   }
 
+  .reset > img {
+    cursor: pointer;
+  }
+
   .question {
     grid-area: question;
     align-self: top;

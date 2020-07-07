@@ -18,8 +18,13 @@ function Reset(props: ResetProps) {
 
   return (
     <div className="reset">
-      {/* <button onClick={props.resetButtonClick}>Reset</button> */}
-      <img src={selectedCloud} alt="Cloud" height="200px" width="auto" />
+      <img
+        onClick={props.resetButtonClick}
+        src={selectedCloud}
+        alt="Cloud"
+        height="200px"
+        width="auto"
+      />
     </div>
   );
 }
