@@ -2,12 +2,30 @@ import React, { Dispatch, useEffect, useState, useContext } from "react";
 import QuestionBlock from "./QuestionBlock";
 import { ThemeContext } from "./ThemeContext";
 import { IQuestion, IAnswer, AnswerId, QuestionId } from "./Questions";
+import wolfPaw from "./WolfPaw.svg";
 
 export type QuestionBlocksProps = {
   questionsAnswers: Map<IQuestion, IAnswer[]>;
   setUserAnswers: Dispatch<React.SetStateAction<Set<AnswerId>>>;
   userAnswers: Set<AnswerId>;
 };
+
+type WolfPawBackButtonProps = {
+  onClick: () => void;
+};
+
+function WolfPawBackButton(props: WolfPawBackButtonProps) {
+  return (
+    <img
+      onClick={props.onClick}
+      src={wolfPaw}
+      alt="Back"
+      height="80px"
+      width="auto"
+      style={{ cursor: "pointer" }}
+    />
+  );
+}
 
 function QuestionBlocks(props: QuestionBlocksProps) {
   const theme = useContext(ThemeContext);
@@ -76,7 +94,9 @@ function QuestionBlocks(props: QuestionBlocksProps) {
           onAnswerSelected={onAnswerSelected}
           selectedAnswerId={questionToAnswerSelected.get(question.id)}
         ></QuestionBlock>
-        {showBackButton && <button onClick={onBackButtonClick}> Back </button>}
+        {showBackButton && (
+          <WolfPawBackButton onClick={onBackButtonClick}></WolfPawBackButton>
+        )}
       </div>
     </>
   );
