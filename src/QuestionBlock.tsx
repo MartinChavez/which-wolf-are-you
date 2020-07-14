@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import "./QuestionBlock.css";
 import { ThemeContext } from "./ThemeContext";
 import { IQuestion, IAnswer, AnswerId } from "./Questions";
 
@@ -19,30 +18,38 @@ export type QuestionBlockProps = {
 
 function Answer(props: AnswerProps) {
   const theme = useContext(ThemeContext);
-  const backgroundColor = props.isSelected ? "grey" : "white";
+  const color = props.isSelected ? "rgb(23, 156, 59)" : theme.textColor;
 
   const onButtonClick = () => {
     props.onAnswerSelected(props.answerId);
   };
 
   return (
-    <button
+    <span
+      className="answer"
       onClick={onButtonClick}
       style={{
-        color: theme.textColor,
-        backgroundColor: backgroundColor,
+        color,
         display: "block",
       }}
     >
       {props.answer}
-    </button>
+    </span>
   );
 }
 
 function QuestionBlock(props: QuestionBlockProps) {
+  const theme = useContext(ThemeContext);
   return (
     <>
-      <h4 className="question-block"> {props.question.question}</h4>
+      <h4
+        className="section-sub-title"
+        style={{
+          color: theme.secondaryTextColor,
+        }}
+      >
+        {props.question.question}
+      </h4>
       {props.answers.map((ans) => (
         <Answer
           key={ans.id}

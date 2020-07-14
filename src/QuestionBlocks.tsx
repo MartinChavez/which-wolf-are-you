@@ -1,5 +1,6 @@
-import React, { Dispatch, useEffect, useState } from "react";
+import React, { Dispatch, useEffect, useState, useContext } from "react";
 import QuestionBlock from "./QuestionBlock";
+import { ThemeContext } from "./ThemeContext";
 import { IQuestion, IAnswer, AnswerId, QuestionId } from "./Questions";
 
 export type QuestionBlocksProps = {
@@ -9,6 +10,7 @@ export type QuestionBlocksProps = {
 };
 
 function QuestionBlocks(props: QuestionBlocksProps) {
+  const theme = useContext(ThemeContext);
   const [questionBlocks, setQuestionBlocks] = useState(
     Array.from(props.questionsAnswers)
   );
@@ -60,7 +62,14 @@ function QuestionBlocks(props: QuestionBlocksProps) {
   return (
     <>
       <div className="question">
-        <h4>Questions</h4>
+        <h4
+          className="section-title"
+          style={{
+            color: theme.textColor,
+          }}
+        >
+          Questions
+        </h4>
         <QuestionBlock
           question={question}
           answers={answers}
