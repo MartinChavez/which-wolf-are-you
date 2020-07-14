@@ -10,11 +10,26 @@ function WolfResult(props: WolfResultProps) {
   const theme = useContext(ThemeContext);
   return (
     <div className="wolf-result">
-      <h4>Your inner wolf</h4>
+      <h4
+        className="section-title"
+        style={{
+          color: theme.textColor,
+        }}
+      >
+        Your inner wolf
+      </h4>
       <span role="img" aria-label="wolf-times">
         {props.wolf.face}
       </span>
-      <p style={{ color: theme.textColor }}>{props.wolf.name}</p>
+      <h4
+        className="section-sub-title"
+        style={{
+          color: theme.secondaryTextColor,
+          textAlign: "center",
+        }}
+      >
+        {props.wolf.name}
+      </h4>
     </div>
   );
 }
