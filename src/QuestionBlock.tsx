@@ -46,6 +46,7 @@ function QuestionBlock(props: QuestionBlockProps) {
         className="section-sub-title"
         style={{
           color: theme.secondaryTextColor,
+          marginBottom: "14px",
         }}
       >
         {props.question.question}
