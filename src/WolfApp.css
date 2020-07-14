@@ -87,6 +87,12 @@
     margin-bottom: auto;
   }
 
+  .answer {
+    font-size: 2em;
+    font-weight: lighter;
+    cursor: pointer;
+  }
+
   @media screen and (max-width: 1142px) {
     .wolf-app {
       grid-template-areas:
