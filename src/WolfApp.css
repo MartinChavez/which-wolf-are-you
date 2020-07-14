@@ -75,6 +75,12 @@
     grid-area: right-grass;
   }
 
+  .section-title {
+    font-size: 4em;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
   @media screen and (max-width: 1142px) {
     .wolf-app {
       grid-template-areas:

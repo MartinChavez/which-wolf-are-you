@@ -12,13 +12,13 @@ type Theme = "day" | "night";
 export const themes: Record<Theme, ThemeInfo> = {
   day: {
     background: "#eeeeee",
-    textColor: "black",
+    textColor: "rgb(34,34,34)",
     hyperlinkColor: "grey",
     name: "day",
   },
   night: {
     background: "#222222",
-    textColor: "white",
+    textColor: "rgb(217,217,217)",
     hyperlinkColor: "#09d3ac",
     name: "night",
   },
