@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { ThemeContext } from "./ThemeContext";
 import { IWolf } from "./Questions";
 import getWolvesInAnswers, { WolfTimes } from "./WolfCounter";
 
@@ -27,6 +28,7 @@ function WolfRecord(props: WolfRecordProps) {
 }
 
 function Tally(props: TallyProps) {
+  const theme = useContext(ThemeContext);
   const [wolvesInAnwsersList, setWolvesInAnwsersList] = useState<WolfTimes[]>(
     []
   );
@@ -42,7 +44,14 @@ function Tally(props: TallyProps) {
 
   return (
     <div className="tally">
-      <h4>Tally</h4>
+      <h4
+        className="section-title"
+        style={{
+          color: theme.textColor,
+        }}
+      >
+        Tally
+      </h4>
       {wolvesInAnwsersList.map((wt: WolfTimes) => {
         let wolfForAnswer = props.allWolves.filter(
           (w) => w.id === wt.wolfId

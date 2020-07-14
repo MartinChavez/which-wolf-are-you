@@ -18,7 +18,7 @@ export type QuestionBlockProps = {
 
 function Answer(props: AnswerProps) {
   const theme = useContext(ThemeContext);
-  const textDecoration = props.isSelected ? "underline" : "";
+  const color = props.isSelected ? "rgb(23, 156, 59)" : theme.textColor;
 
   const onButtonClick = () => {
     props.onAnswerSelected(props.answerId);
@@ -29,9 +29,8 @@ function Answer(props: AnswerProps) {
       className="answer"
       onClick={onButtonClick}
       style={{
-        color: theme.textColor,
+        color,
         display: "block",
-        textDecoration,
       }}
     >
       {props.answer}
